@@ -183,4 +183,8 @@ public final class Constants {
     public static final double kConveyTwo = 50.;
   }
 
+  //joystick and buttons
+  public static final int RIGHT_JOYSTICK_CHANNEL = 0;
+  public static final int LEFT_JOYSTICK_CHANNEL = 1;
+
 }
