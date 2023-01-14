@@ -70,6 +70,10 @@ public class Drivetrain {
     m_gyro.calibrate();
   }
 
+  public void recalibrateGyro() {
+    m_gyro.calibrate();
+  }
+
   /**
    * Method to drive the robot using joystick info.
    *
