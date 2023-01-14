@@ -21,46 +21,46 @@ public final class Constants {
 
     public static final boolean MK4I = false;
 
-    public static final int kFrontLeftDriveMotorPort = 1;
-    public static final int kRearLeftDriveMotorPort = 6;
-    public static final int kFrontRightDriveMotorPort = 4;
-    public static final int kRearRightDriveMotorPort = 7;
+    // public static final int kFrontLeftDriveMotorPort = 1;
+    // public static final int kRearLeftDriveMotorPort = 6;
+    // public static final int kFrontRightDriveMotorPort = 4;
+    // public static final int kRearRightDriveMotorPort = 7;
 
-    public static final int kFrontLeftTurningMotorPort = 2;
-    public static final int kRearLeftTurningMotorPort = 5;
-    public static final int kFrontRightTurningMotorPort = 3;
-    public static final int kRearRightTurningMotorPort = 8;
+    // public static final int kFrontLeftTurningMotorPort = 2;
+    // public static final int kRearLeftTurningMotorPort = 5;
+    // public static final int kFrontRightTurningMotorPort = 3;
+    // public static final int kRearRightTurningMotorPort = 8;
 
-    public static final int i_kFrontLeftDriveMotorPort = 2;
-    public static final int i_kRearLeftDriveMotorPort = 6;
-    public static final int i_kFrontRightDriveMotorPort = 4;
-    public static final int i_kRearRightDriveMotorPort = 8;
+    // public static final int i_kFrontLeftDriveMotorPort = 2;
+    // public static final int i_kRearLeftDriveMotorPort = 6;
+    // public static final int i_kFrontRightDriveMotorPort = 4;
+    // public static final int i_kRearRightDriveMotorPort = 8;
 
-    public static final int i_kFrontLeftTurningMotorPort = 1;
-    public static final int i_kRearLeftTurningMotorPort = 5;
-    public static final int i_kFrontRightTurningMotorPort = 3;
-    public static final int i_kRearRightTurningMotorPort = 7;
+    // public static final int i_kFrontLeftTurningMotorPort = 1;
+    // public static final int i_kRearLeftTurningMotorPort = 5;
+    // public static final int i_kFrontRightTurningMotorPort = 3;
+    // public static final int i_kRearRightTurningMotorPort = 7;
 
-    public static final int i_kFrontLeftEncoderCan = 1;
-    public static final int i_kRearLeftEncoderCan = 3;
-    public static final int i_kFrontRightEncoderCan = 2;
-    public static final int i_kRearRightEncoderCan = 4;
+    public static final double BACK_RIGHT_ANGLE_OFFSET_COMPETITION = Math.toRadians(160); //
+    public static final double BACK_LEFT_ANGLE_OFFSET_COMPETITION = Math.toRadians(208); //
+    public static final double FRONT_RIGHT_ANGLE_OFFSET_COMPETITION = Math.toRadians(165); //
+    public static final double FRONT_LEFT_ANGLE_OFFSET_COMPETITION = Math.toRadians(77); //
 
-    // public static final int DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR = 8; 
-    // public static final int DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER = IS_2022 ? 0 : 3; 
-    // public static final int DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR = 7; 
+    public static final int DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR = 8; 
+    public static final int DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER = 0; 
+    public static final int DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR = 7; 
 
-    // public static final int DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR = 4; 
-    // public static final int DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER = IS_2022 ? 3 : 2;
-    // public static final int DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR = 3; 
+    public static final int DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR = 4; 
+    public static final int DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER = 3;
+    public static final int DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR = 3; 
   
-    // public static final int DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR = 6; 
-    // public static final int DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER = 1;
-    // public static final int DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR = 5; 
+    public static final int DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR = 6; 
+    public static final int DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER = 1;
+    public static final int DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR = 5; 
 
-    // public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR = 2;
-    // public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER = IS_2022 ? 2 : 0;
-    // public static final int DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR = 1; 
+    public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR = 2;
+    public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER = 2;
+    public static final int DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR = 1; 
 
 
     public static final double kTrackWidth = MK4I? util.inchesToMeters(23.75): util.inchesToMeters(23.5);

@@ -4,13 +4,19 @@
 
 package frc.robot.subsystems;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.SPI;
+
 import frc.robot.subsystems.SwerveModule;
+import frc.robot.Constants;
+import frc.robot.drivers.NavX;
 
 /** Represents a swerve drive style drivetrain. */
 public class Drivetrain {
@@ -21,13 +27,27 @@ public class Drivetrain {
   private final Translation2d m_frontRightLocation = new Translation2d(0.381, -0.381);
   private final Translation2d m_backLeftLocation = new Translation2d(-0.381, 0.381);
   private final Translation2d m_backRightLocation = new Translation2d(-0.381, -0.381);
+  
+  private final SwerveModule m_frontLeft = new SwerveModule(Constants.DriveConstants.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR, 
+                                                            Constants.DriveConstants.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR, 
+                                                            Constants.DriveConstants.DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER, 
+                                                            Constants.DriveConstants.FRONT_LEFT_ANGLE_OFFSET_COMPETITION);
+  private final SwerveModule m_frontRight = new SwerveModule(Constants.DriveConstants.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR, 
+                                                            Constants.DriveConstants.DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR, 
+                                                            Constants.DriveConstants.DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER, 
+                                                            Constants.DriveConstants.FRONT_RIGHT_ANGLE_OFFSET_COMPETITION);
+  private final SwerveModule m_backLeft = new SwerveModule(Constants.DriveConstants.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR, 
+                                                            Constants.DriveConstants.DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR, 
+                                                            Constants.DriveConstants.DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER, 
+                                                            Constants.DriveConstants.BACK_LEFT_ANGLE_OFFSET_COMPETITION);
+  private final SwerveModule m_backRight = new SwerveModule(Constants.DriveConstants.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR, 
+                                                            Constants.DriveConstants.DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR, 
+                                                            Constants.DriveConstants.DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER, 
+                                                            Constants.DriveConstants.BACK_RIGHT_ANGLE_OFFSET_COMPETITION);
 
-  private final SwerveModule m_frontLeft = new SwerveModule(1, 2, 0, 1);
-  private final SwerveModule m_frontRight = new SwerveModule(3, 4, 4, 5);
-  private final SwerveModule m_backLeft = new SwerveModule(5, 6, 8, 9);
-  private final SwerveModule m_backRight = new SwerveModule(7, 8, 12, 13);
+  // private final AnalogGyro m_gyro = new AnalogGyro(0);
 
-  private final AnalogGyro m_gyro = new AnalogGyro(0);
+  private final NavX m_gyro = new NavX(SPI.Port.kMXP);
 
   private final SwerveDriveKinematics m_kinematics =
       new SwerveDriveKinematics(
@@ -45,7 +65,7 @@ public class Drivetrain {
           });
 
   public Drivetrain() {
-    m_gyro.reset();
+    m_gyro.calibrate();
   }
 
   /**
