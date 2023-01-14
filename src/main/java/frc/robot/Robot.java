@@ -51,7 +51,8 @@ public class Robot extends TimedRobot {
     // mathematics). Xbox controllers return positive values when you pull to
     // the right by default.
     final var rot =
-        -m_rotLimiter.calculate(MathUtil.applyDeadband(leftJoystick.getX(), 0.02))
+    //must be positive to read accuate joystick yaw
+        m_rotLimiter.calculate(MathUtil.applyDeadband(leftJoystick.getX(), 0.02))
             * Drivetrain.kMaxAngularSpeed;
 
     m_swerve.drive(xSpeed, ySpeed, rot, fieldRelative);

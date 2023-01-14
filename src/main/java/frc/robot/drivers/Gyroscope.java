@@ -38,6 +38,7 @@ public abstract class Gyroscope {
 		Rotation2d angle = getUnadjustedAngle().rotateBy(inverse(adjustmentAngle));
 
 		if (inverted) {
+			System.out.println(angle);
 			return inverse(angle);
 		}
 

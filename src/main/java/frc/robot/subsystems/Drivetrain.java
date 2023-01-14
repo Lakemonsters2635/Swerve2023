@@ -20,7 +20,8 @@ import frc.robot.drivers.NavX;
 
 /** Represents a swerve drive style drivetrain. */
 public class Drivetrain {
-  public static final double kMaxSpeed = 3.0; // 3 meters per second
+  // public static final double kMaxSpeed = 3.0; // 3 meters per second
+  public static final double kMaxSpeed = 0.2;
   public static final double kMaxAngularSpeed = Math.PI; // 1/2 rotation per second
 
   private final Translation2d m_frontLeftLocation = new Translation2d(0.381, 0.381);
@@ -65,6 +66,7 @@ public class Drivetrain {
           });
 
   public Drivetrain() {
+    // m_gyro.setInverted(true);
     m_gyro.calibrate();
   }
 

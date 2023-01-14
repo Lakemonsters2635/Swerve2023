@@ -35,11 +35,14 @@ public final class NavX extends Gyroscope {
 
     @Override
     public Rotation2d getUnadjustedAngle() {
+        // System.out.println("getUnadjustedAngle: " + getAxis(Axis.YAW));
         return Rotation2d.fromRadians(getAxis(Axis.YAW));
     }
 
     public Rotation2d getRotation2d() {
-        return Rotation2d.fromRadians(getAxis(Axis.YAW));
+        // System.out.println("getRotation2d: " + getAxis(Axis.YAW));
+        // had to invert the get axis to fir the relative feild velocity comands after a 90 degree rotation
+        return Rotation2d.fromRadians(-getAxis(Axis.YAW));
     }
 
     @Override
