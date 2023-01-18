@@ -9,6 +9,7 @@ import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.SwerveModule;
@@ -19,12 +20,20 @@ public class Robot extends TimedRobot {
   
   private final Drivetrain m_swerve = new Drivetrain();
 
-  public static JoystickButton recalibrate = new JoystickButton(rightJoystick, Constants.CALIBRATE_BUTTON);
-
   // Slew rate limiters to make joystick inputs more gentle; 1/3 sec from 0 to 1.
   private final SlewRateLimiter m_xspeedLimiter = new SlewRateLimiter(3);
   private final SlewRateLimiter m_yspeedLimiter = new SlewRateLimiter(3);
   private final SlewRateLimiter m_rotLimiter = new SlewRateLimiter(3);
+
+  private static Trigger recalibrateButton = new JoystickButton(rightJoystick, Constants.CALIBRATE_BUTTON);
+
+  public Robot() {
+    configureButtonBindings();
+  }
+
+  private void configureButtonBindings() {
+    recalibrateButton.onTrue(m_swerve.recalibrateGyro());
+  }
 
   @Override
   public void autonomousPeriodic() {
@@ -34,7 +43,15 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+    m_swerve.m_frontLeft.updateSwerveTable(); // 0 analog ID 
+    m_swerve.m_frontRight.updateSwerveTable(); // 3 analog ID
+    m_swerve.m_backLeft.updateSwerveTable(); // 1 analog ID
+    m_swerve.m_backRight.updateSwerveTable(); //2 analog ID
     driveWithJoystick(true);
+    System.out.println("front left table ang: " + m_swerve.m_frontLeft.t_turningEncoder.getDouble(-1));
+    System.out.println("front right table ang: " + m_swerve.m_frontRight.t_turningEncoder.getDouble(-1));
+    System.out.println("back left table ang: " + m_swerve.m_backLeft.t_turningEncoder.getDouble(-1));
+    System.out.println("back right table ang: " + m_swerve.m_backRight.t_turningEncoder.getDouble(-1));
   }
 
   public void testPeriodic() {
@@ -42,6 +59,10 @@ public class Robot extends TimedRobot {
     m_swerve.m_frontRight.updateSwerveTable(); // 3 analog ID
     m_swerve.m_backLeft.updateSwerveTable(); // 1 analog ID
     m_swerve.m_backRight.updateSwerveTable(); //2 analog ID
+    System.out.println("front left table ang: " + m_swerve.m_frontLeft.t_turningEncoder.getDouble(-1));
+    System.out.println("front right table ang: " + m_swerve.m_frontRight.t_turningEncoder.getDouble(-1));
+    System.out.println("back left table ang: " + m_swerve.m_backLeft.t_turningEncoder.getDouble(-1));
+    System.out.println("back right table ang: " + m_swerve.m_backRight.t_turningEncoder.getDouble(-1));
   }
 
   public void testInit() {

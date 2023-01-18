@@ -153,8 +153,8 @@ public class SwerveModule {
   }
 
   /** Zeros all the SwerveModule encoders. */
-  /*public void resetEncoders() {
-    m_driveEncoder.reset();
-    m_turningEncoder.reset();
-  }*/
+  // public void resetEncoders() {
+  //   m_driveEncoder.reset();
+  //   m_turningEncoder.reset();
+  // }
 }
