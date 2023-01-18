@@ -4,8 +4,6 @@
 
 package frc.robot.subsystems;
 
-import com.kauailabs.navx.frc.AHRS;
-
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -14,14 +12,13 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.SPI;
 
-import frc.robot.subsystems.SwerveModule;
 import frc.robot.Constants;
 import frc.robot.drivers.NavX;
 
 /** Represents a swerve drive style drivetrain. */
 public class Drivetrain {
   // public static final double kMaxSpeed = 3.0; // 3 meters per second
-  public static final double kMaxSpeed = 0.2;
+  public static final double kMaxSpeed = 0.5;
   public static final double kMaxAngularSpeed = Math.PI; // 1/2 rotation per second
 
   private final Translation2d m_frontLeftLocation = new Translation2d(0.381, 0.381);
