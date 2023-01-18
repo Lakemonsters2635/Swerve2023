@@ -7,9 +7,11 @@ package frc.robot;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.SwerveModule;
 
 public class Robot extends TimedRobot {
   public static Joystick rightJoystick = new Joystick(Constants.RIGHT_JOYSTICK_CHANNEL);
@@ -33,6 +35,18 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     driveWithJoystick(true);
+  }
+
+  public void testPeriodic() {
+    m_swerve.m_frontLeft.updateSwerveTable(); // 0 analog ID 
+    m_swerve.m_frontRight.updateSwerveTable(); // 3 analog ID
+    m_swerve.m_backLeft.updateSwerveTable(); // 1 analog ID
+    m_swerve.m_backRight.updateSwerveTable(); //2 analog ID
+  }
+
+  public void testInit() {
+    // Cancels all running commands at the start of test mode.
+    CommandScheduler.getInstance().cancelAll();
   }
 
   private void driveWithJoystick(boolean fieldRelative) {

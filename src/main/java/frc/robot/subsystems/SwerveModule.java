@@ -19,8 +19,11 @@ import edu.wpi.first.wpilibj.AnalogEncoder;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotController;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+
 import frc.robot.Constants;
-import frc.robot.util;
 import frc.robot.Constants.ModuleConstants;
 
 public class SwerveModule {
@@ -47,6 +50,8 @@ public class SwerveModule {
   //             ModuleConstants.kMaxModuleAngularAccelerationRadiansPerSecondSquared));
   private final PIDController m_turningPIDController = new PIDController(ModuleConstants.kPModuleTurningController, 0, 0.0001);
 
+  public NetworkTableEntry t_turningEncoder;
+
   /**
    * Constructs a SwerveModule.
    *
@@ -57,7 +62,14 @@ public class SwerveModule {
       int driveMotorChannel,
       int turningMotorChannel,
       int analogEncoderPort,
-      double turningMotorOffset) {
+      double turningMotorOffset,
+      int moduleID  //ID for what swerve module it is
+      ) {
+      
+    NetworkTable swerveTable = NetworkTableInstance.getDefault().getTable("swerve");
+    
+    t_turningEncoder = swerveTable.getEntry("turningEncoder_" + moduleID);
+
     m_driveMotor = new CANSparkMax(driveMotorChannel, MotorType.kBrushless);
     m_turningMotor = new CANSparkMax(turningMotorChannel, MotorType.kBrushless);
     this.turningMotorOffset = turningMotorOffset;
@@ -89,6 +101,10 @@ public class SwerveModule {
     // Limit the PID Controller's input range between -pi and pi and set the input
     // to be continuous.
     m_turningPIDController.enableContinuousInput(-Math.PI, Math.PI);
+  }
+
+  public void updateSwerveTable() {
+    t_turningEncoder.setDouble(Math.toRadians(m_turningMotor.getEncoder().getPosition()));
   }
 
   public SwerveModulePosition getPosition() {
