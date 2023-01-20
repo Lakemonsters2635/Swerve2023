@@ -7,14 +7,12 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.SparkMaxRelativeEncoder.Type;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.AnalogEncoder;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -24,7 +22,6 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 import frc.robot.Constants;
-import frc.robot.Constants.ModuleConstants;
 
 public class SwerveModule {
   private final CANSparkMax m_driveMotor;
@@ -39,16 +36,7 @@ public class SwerveModule {
   private final PIDController m_drivePIDController =
       new PIDController(0.005, 0, 0);
 
-  // Using a TrapezoidProfile PIDController to allow for smooth turning
-  // private final ProfiledPIDController m_turningPIDController =
-  //     new ProfiledPIDController(
-  //         ModuleConstants.kPModuleTurningController,
-  //         0,
-  //         0.0001,
-  //         new TrapezoidProfile.Constraints(
-  //             ModuleConstants.kMaxModuleAngularSpeedRadiansPerSecond,
-  //             ModuleConstants.kMaxModuleAngularAccelerationRadiansPerSecondSquared));
-  private final PIDController m_turningPIDController = new PIDController(ModuleConstants.kPModuleTurningController, 0, 0.0001);
+  private final PIDController m_turningPIDController = new PIDController(Constants.kPModuleTurningController, 0, 0.0001);
 
   public NetworkTableEntry t_turningEncoder;
 
@@ -74,16 +62,14 @@ public class SwerveModule {
     m_turningMotor = new CANSparkMax(turningMotorChannel, MotorType.kBrushless);
     this.turningMotorOffset = turningMotorOffset;
 
-    //this.m_driveEncoder = new Encoder(driveEncoderPorts[0], driveEncoderPorts[1]);
   
     m_turningEncoder = new AnalogInput(analogEncoderPort);
-    //m_turningEncoder = m_driveMotor.getEncoder();
 
     m_driveEncoder = m_driveMotor.getEncoder();
     // Set the distance per pulse for the drive encoder. We can simply use the
     // distance traveled for one rotation of the wheel divided by the encoder
     // resolution.
-    m_driveEncoder.setPositionConversionFactor(Constants.ModuleConstants.kDriveEncoderDistancePerPulse);
+    m_driveEncoder.setPositionConversionFactor(Constants.kDriveEncoderDistancePerPulse);
 
     //m_turningEncoder.setPosition(turningMotorOffset);
 

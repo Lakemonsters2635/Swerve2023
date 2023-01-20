@@ -102,7 +102,16 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during test mode. */
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+    m_robotContainer.m_drivetrainSubsystem.m_frontLeft.updateSwerveTable(); // 0 analog ID 
+    m_robotContainer.m_drivetrainSubsystem.m_frontRight.updateSwerveTable(); // 3 analog ID
+    m_robotContainer.m_drivetrainSubsystem.m_backLeft.updateSwerveTable(); // 1 analog ID
+    m_robotContainer.m_drivetrainSubsystem.m_backRight.updateSwerveTable(); //2 analog ID
+    System.out.println("front left table ang: " + m_robotContainer.m_drivetrainSubsystem.m_frontLeft.t_turningEncoder.getDouble(-1));
+    System.out.println("front right table ang: " + m_robotContainer.m_drivetrainSubsystem.m_frontRight.t_turningEncoder.getDouble(-1));
+    System.out.println("back left table ang: " + m_robotContainer.m_drivetrainSubsystem.m_backLeft.t_turningEncoder.getDouble(-1));
+    System.out.println("back right table ang: " + m_robotContainer.m_drivetrainSubsystem.m_backRight.t_turningEncoder.getDouble(-1));
+  }
 
   /** This function is called once when the robot is first started up. */
   @Override

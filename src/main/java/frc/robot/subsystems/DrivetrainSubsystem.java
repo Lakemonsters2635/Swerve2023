@@ -17,7 +17,7 @@ import frc.robot.drivers.NavX;
 public class DrivetrainSubsystem extends SubsystemBase {
 
     // public static final double kMaxSpeed = 3.0; // 3 meters per second
-    public static final double kMaxSpeed = 0.5;
+    public static final double kMaxSpeed = 0.3;
     public static final double kMaxAngularSpeed = Math.PI; // 1/2 rotation per second
   
     private final Translation2d m_frontLeftLocation = new Translation2d(0.381, 0.381);
@@ -25,26 +25,26 @@ public class DrivetrainSubsystem extends SubsystemBase {
     private final Translation2d m_backLeftLocation = new Translation2d(-0.381, 0.381);
     private final Translation2d m_backRightLocation = new Translation2d(-0.381, -0.381);
     
-    public final SwerveModule m_frontLeft = new SwerveModule(Constants.DriveConstants.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR, 
-                                                              Constants.DriveConstants.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR, 
-                                                              Constants.DriveConstants.DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER, 
-                                                              Constants.DriveConstants.FRONT_LEFT_ANGLE_OFFSET_COMPETITION,
-                                                              Constants.DriveConstants.DRIVETRAIN_FRONT_LEFT_ANALOGID);
-    public final SwerveModule m_frontRight = new SwerveModule(Constants.DriveConstants.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR, 
-                                                              Constants.DriveConstants.DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR, 
-                                                              Constants.DriveConstants.DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER, 
-                                                              Constants.DriveConstants.FRONT_RIGHT_ANGLE_OFFSET_COMPETITION,
-                                                              Constants.DriveConstants.DRIVETRAIN_FRONT_RIGHT_ANALOGID);
-    public final SwerveModule m_backLeft = new SwerveModule(Constants.DriveConstants.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR, 
-                                                              Constants.DriveConstants.DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR, 
-                                                              Constants.DriveConstants.DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER, 
-                                                              Constants.DriveConstants.BACK_LEFT_ANGLE_OFFSET_COMPETITION,
-                                                              Constants.DriveConstants.DRIVETRAIN_BACK_LEFT_ANALOGID);
-    public final SwerveModule m_backRight = new SwerveModule(Constants.DriveConstants.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR, 
-                                                              Constants.DriveConstants.DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR, 
-                                                              Constants.DriveConstants.DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER, 
-                                                              Constants.DriveConstants.BACK_RIGHT_ANGLE_OFFSET_COMPETITION,
-                                                              Constants.DriveConstants.DRIVETRAIN_BACK_RIGHT_ANALOGID);
+    public final SwerveModule m_frontLeft = new SwerveModule(Constants.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR, 
+                                                              Constants.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR, 
+                                                              Constants.DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER, 
+                                                              Constants.FRONT_LEFT_ANGLE_OFFSET_COMPETITION,
+                                                              Constants.DRIVETRAIN_FRONT_LEFT_ANALOGID);
+    public final SwerveModule m_frontRight = new SwerveModule(Constants.DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR, 
+                                                              Constants.DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR, 
+                                                              Constants.DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER, 
+                                                              Constants.FRONT_RIGHT_ANGLE_OFFSET_COMPETITION,
+                                                              Constants.DRIVETRAIN_FRONT_RIGHT_ANALOGID);
+    public final SwerveModule m_backLeft = new SwerveModule(Constants.DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR, 
+                                                              Constants.DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR, 
+                                                              Constants.DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER, 
+                                                              Constants.BACK_LEFT_ANGLE_OFFSET_COMPETITION,
+                                                              Constants.DRIVETRAIN_BACK_LEFT_ANALOGID);
+    public final SwerveModule m_backRight = new SwerveModule(Constants.DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR, 
+                                                              Constants.DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR, 
+                                                              Constants.DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER, 
+                                                              Constants.BACK_RIGHT_ANGLE_OFFSET_COMPETITION,
+                                                              Constants.DRIVETRAIN_BACK_RIGHT_ANALOGID);
   
     // private final AnalogGyro m_gyro = new AnalogGyro(0);
   
@@ -69,7 +69,9 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
   /** Creates a new DrivetrianSubsystem. */
   public DrivetrainSubsystem() {
+    System.out.println(m_gyro.getRotation2d());
     m_gyro.calibrate();
+    System.out.println(m_gyro.getRotation2d());
   }
 
   @Override
@@ -79,8 +81,9 @@ public class DrivetrainSubsystem extends SubsystemBase {
   }
 
   public void recalibrateGyro() {
-    // System.out.println("Reset");
-    updateOdometry();
+    System.out.println(m_gyro.getRotation2d());
+    m_gyro.calibrate();
+    System.out.println(m_gyro.getRotation2d());
   }
 
   /**

@@ -13,34 +13,35 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static final class DriveConstants {
+
+    // FRONT LEFT
     public static final int DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR = 8; 
     public static final int DRIVETRAIN_FRONT_LEFT_ANGLE_ENCODER = 0; 
     public static final int DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR = 7; 
-    public static final double FRONT_LEFT_ANGLE_OFFSET_COMPETITION = Math.toRadians(77);//3.543700809;
+    public static final double FRONT_LEFT_ANGLE_OFFSET_COMPETITION = Math.toRadians(77);
     public static final int DRIVETRAIN_FRONT_LEFT_ANALOGID = 0;
 
+    // FRONT RIGHT
     public static final int DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR = 4; 
     public static final int DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER = 3;
     public static final int DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR = 3;
     public static final double FRONT_RIGHT_ANGLE_OFFSET_COMPETITION = Math.toRadians(165);
     public static final int DRIVETRAIN_FRONT_RIGHT_ANALOGID = 3;
 
+    // BACK LEFT
     public static final int DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR = 6; 
     public static final int DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER = 1;
     public static final int DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR = 5; 
     public static final double BACK_LEFT_ANGLE_OFFSET_COMPETITION = Math.toRadians(208);
     public static final int DRIVETRAIN_BACK_LEFT_ANALOGID = 1;
 
+    // BACK RIGHT
     public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR = 2;
     public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER = 2;
     public static final int DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR = 1; 
-    public static final double BACK_RIGHT_ANGLE_OFFSET_COMPETITION = Math.toRadians(200);//0.731201097;
+    public static final double BACK_RIGHT_ANGLE_OFFSET_COMPETITION = Math.toRadians(200);
     public static final int DRIVETRAIN_BACK_RIGHT_ANALOGID = 2;
-  }
 
-
-  public static final class ModuleConstants {
     public static final double kMaxModuleAngularSpeedRadiansPerSecond = 2 * Math.PI;
     public static final double kMaxModuleAngularAccelerationRadiansPerSecondSquared = 2 * Math.PI;
 
@@ -57,12 +58,9 @@ public final class Constants {
     public static final double kPModuleTurningController = 0.5;
 
     public static final double kPModuleDriveController = 0;
-  }
 
-  public static final class OIConstants {
     public static final int kDriverControllerPort = 0;
     public static final int kOperatorControllerPort = 1;
-  }
 
   //joystick and buttons
   public static final int RIGHT_JOYSTICK_CHANNEL = 1;
