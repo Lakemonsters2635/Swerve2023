@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj.Joystick;
+import frc.robot.commands.DriveStraightCommand;
 import frc.robot.commands.ResetSwerveGyroCommand;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
@@ -43,6 +44,6 @@ public class RobotContainer extends TimedRobot {
   }
 
     public Command getAutonomousCommand() {
-        return null;
+      return new DriveStraightCommand(m_drivetrainSubsystem).withTimeout(5);
     }
 }

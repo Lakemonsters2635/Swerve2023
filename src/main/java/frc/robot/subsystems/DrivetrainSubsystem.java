@@ -10,6 +10,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.drivers.NavX;
@@ -78,6 +79,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     updateOdometry();
+    SmartDashboard.putNumber("FL rotation", m_frontLeft.getTurningEncoderRadians());
+    SmartDashboard.putNumber("FR rotation", m_frontRight.getTurningEncoderRadians());
+    SmartDashboard.putNumber("BL rotation", m_backLeft.getTurningEncoderRadians());
+    SmartDashboard.putNumber("BR rotation", m_backRight.getTurningEncoderRadians());
+
   }
 
   public void recalibrateGyro() {
