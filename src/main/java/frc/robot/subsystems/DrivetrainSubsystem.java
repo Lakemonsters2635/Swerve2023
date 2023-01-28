@@ -57,7 +57,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
       m_backLeftLocation, 
       m_backRightLocation);
   
-    private final SwerveDriveOdometry m_odometry =
+    public final SwerveDriveOdometry m_odometry =
         new SwerveDriveOdometry(
             m_kinematics,
             m_gyro.getRotation2d(),

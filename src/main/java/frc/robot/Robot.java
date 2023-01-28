@@ -80,6 +80,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+    System.out.println("teleop init pose" + m_robotContainer.m_drivetrainSubsystem.m_odometry.getPoseMeters());
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }

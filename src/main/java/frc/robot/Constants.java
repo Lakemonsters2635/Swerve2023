@@ -25,21 +25,21 @@ public final class Constants {
     public static final int DRIVETRAIN_FRONT_RIGHT_ANGLE_MOTOR = 3; // 4
     public static final int DRIVETRAIN_FRONT_RIGHT_ANGLE_ENCODER = 1; // 3
     public static final int DRIVETRAIN_FRONT_RIGHT_DRIVE_MOTOR = 4; // 3
-    public static final double FRONT_RIGHT_ANGLE_OFFSET_COMPETITION = 1.334;
+    public static final double FRONT_RIGHT_ANGLE_OFFSET_COMPETITION = Math.toRadians(21);
     public static final int DRIVETRAIN_FRONT_RIGHT_ANALOGID = 3;
 
     // BACK LEFT
     public static final int DRIVETRAIN_BACK_LEFT_ANGLE_MOTOR = 5; // 6 
     public static final int DRIVETRAIN_BACK_LEFT_ANGLE_ENCODER = 2; // 1
     public static final int DRIVETRAIN_BACK_LEFT_DRIVE_MOTOR = 6; // 5
-    public static final double BACK_LEFT_ANGLE_OFFSET_COMPETITION = 5.94;
+    public static final double BACK_LEFT_ANGLE_OFFSET_COMPETITION = Math.toRadians(-83);
     public static final int DRIVETRAIN_BACK_LEFT_ANALOGID = 1;
 
     // BACK RIGHT
     public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR = 7; // 2
     public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER = 3; // 2
     public static final int DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR = 8; // 1
-    public static final double BACK_RIGHT_ANGLE_OFFSET_COMPETITION = -0.7058;
+    public static final double BACK_RIGHT_ANGLE_OFFSET_COMPETITION = Math.toRadians(-20);
     public static final int DRIVETRAIN_BACK_RIGHT_ANALOGID = 2;
 
     public static final double kMaxModuleAngularSpeedRadiansPerSecond = 2 * Math.PI;
