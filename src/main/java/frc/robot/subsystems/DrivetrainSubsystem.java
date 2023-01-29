@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -123,6 +125,22 @@ public class DrivetrainSubsystem extends SubsystemBase {
           m_backLeft.getPosition(),
           m_backRight.getPosition()
         });
+  }
+
+  /**
+   * Zeroes the robot's position on the field using SwerveDriveOdometry's resetPosition()
+   *
+   * <p>Should be used to zero the drivetrain odometry whenever the robot is re-enabled. 
+   * Otherwise the robot will "save" the position it was at when it was last disabled, and when
+   * re-enabling the robot will think it's at the old position.
+  */
+  public void zeroDrivetrainOdometry() {
+    SwerveModulePosition[] initSwerveModulePos = {new SwerveModulePosition(), 
+                                                  new SwerveModulePosition(),
+                                                  new SwerveModulePosition(),
+                                                  new SwerveModulePosition()};
+
+    this.m_odometry.resetPosition(new Rotation2d(), initSwerveModulePos, new Pose2d());
   }
 
   

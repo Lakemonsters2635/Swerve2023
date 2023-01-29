@@ -24,7 +24,7 @@ public class DriveStraightCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drivetrainSubsystem.drive(0.3, 0.0, 0, isFinished());
+    m_drivetrainSubsystem.drive(0.2, 0.0, 0, isFinished());
   }
 
   // Called once the command ends or is interrupted.

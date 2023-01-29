@@ -5,6 +5,9 @@
 package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -59,6 +62,8 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
+    m_robotContainer.m_drivetrainSubsystem.zeroDrivetrainOdometry();
+    System.out.println("auto init pose" + m_robotContainer.m_drivetrainSubsystem.m_odometry.getPoseMeters());
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
@@ -80,6 +85,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+    m_robotContainer.m_drivetrainSubsystem.zeroDrivetrainOdometry();
     System.out.println("teleop init pose" + m_robotContainer.m_drivetrainSubsystem.m_odometry.getPoseMeters());
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
@@ -143,7 +149,7 @@ public class Robot extends TimedRobot {
     // the right by default.
     final var rot =
     //must be positive to read accuate joystick yaw
-        m_robotContainer.m_rotLimiter.calculate(MathUtil.applyDeadband(m_robotContainer.leftJoystick.getX(), 0.02))
+        m_robotContainer.m_rotLimiter.calculate(MathUtil.applyDeadband(m_robotContainer.leftJoystick.getX(), 0.0))
             * DrivetrainSubsystem.kMaxAngularSpeed;
 
     m_robotContainer.m_drivetrainSubsystem.drive(xSpeed, ySpeed, rot, fieldRelative);

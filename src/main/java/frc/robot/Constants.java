@@ -39,7 +39,7 @@ public final class Constants {
     public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_MOTOR = 7; // 2
     public static final int DRIVETRAIN_BACK_RIGHT_ANGLE_ENCODER = 3; // 2
     public static final int DRIVETRAIN_BACK_RIGHT_DRIVE_MOTOR = 8; // 1
-    public static final double BACK_RIGHT_ANGLE_OFFSET_COMPETITION = Math.toRadians(-20);
+    public static final double BACK_RIGHT_ANGLE_OFFSET_COMPETITION = Math.toRadians(155);
     public static final int DRIVETRAIN_BACK_RIGHT_ANALOGID = 2;
 
     public static final double kMaxModuleAngularSpeedRadiansPerSecond = 2 * Math.PI;
