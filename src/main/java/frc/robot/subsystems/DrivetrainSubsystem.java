@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -21,10 +23,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
     public static final double kMaxSpeed = 0.3;
     public static final double kMaxAngularSpeed = Math.PI; // 1/2 rotation per second
   
-    private final Translation2d m_frontLeftLocation = new Translation2d(0.381, 0.381);
-    private final Translation2d m_frontRightLocation = new Translation2d(0.381, -0.381);
-    private final Translation2d m_backLeftLocation = new Translation2d(-0.381, 0.381);
-    private final Translation2d m_backRightLocation = new Translation2d(-0.381, -0.381);
+    // units of rotation2d probably meters (Ocean) 28.5 in, 18.5 in axis to axis (CAD)
+    private final Translation2d m_frontLeftLocation = new Translation2d(0.36195, 0.23495);
+    private final Translation2d m_frontRightLocation = new Translation2d(0.36195, -0.23495);
+    private final Translation2d m_backLeftLocation = new Translation2d(-0.36195, 0.23495);
+    private final Translation2d m_backRightLocation = new Translation2d(-0.36195, -0.23495);
     
     public final SwerveModule m_frontLeft = new SwerveModule(Constants.DRIVETRAIN_FRONT_LEFT_DRIVE_MOTOR, 
                                                               Constants.DRIVETRAIN_FRONT_LEFT_ANGLE_MOTOR, 
@@ -123,6 +126,22 @@ public class DrivetrainSubsystem extends SubsystemBase {
           m_backLeft.getPosition(),
           m_backRight.getPosition()
         });
+  }
+
+  /**
+   * Zeroes the robot's position on the field using SwerveDriveOdometry's resetPosition()
+   *
+   * <p>Should be used to zero the drivetrain odometry whenever the robot is re-enabled. 
+   * Otherwise the robot will "save" the position it was at when it was last disabled, and when
+   * re-enabling the robot will think it's at the old position.
+  */
+  public void zeroDrivetrainOdometry() {
+    SwerveModulePosition[] initSwerveModulePos = {new SwerveModulePosition(), 
+                                                  new SwerveModulePosition(),
+                                                  new SwerveModulePosition(),
+                                                  new SwerveModulePosition()};
+
+    this.m_odometry.resetPosition(new Rotation2d(), initSwerveModulePos, new Pose2d());
   }
 
   
